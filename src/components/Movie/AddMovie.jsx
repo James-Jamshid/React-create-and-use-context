@@ -6,15 +6,23 @@ const AddMovie = () => {
   const [price, setPrice] = useState("");
   const [data, setData] = useContext(Movie);
   const onAdd = () => {
-    // console.log(name, price);
-    setData((prev) => [...prev, { id: 5, name: name, price: price }]);
+    if (name.length !== 0 && price.length !== 0) {
+      // console.log(name, price);
+      setData((prev) => [
+        ...prev,
+        { id: data.length + 1, name: name, price: price },
+      ]);
+    }
+
+    setName("");
+    setPrice("");
   };
   return (
     <AddContainer>
       <div>
         <h4>
           If you want add new movie below, just type the name movie, price and
-          click Add
+          click the button!
         </h4>
       </div>
       <div className="input">
